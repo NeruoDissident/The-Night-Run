@@ -1,0 +1,82 @@
+/* Touch and installed-app layout. Safe areas preserve iPhone notch/home-indicator space. */
+html { -webkit-text-size-adjust: 100%; }
+button, a, canvas { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+button { -webkit-user-select: none; user-select: none; }
+input { font-size: 16px; }
+.brand-icon { width: 32px; height: 32px; vertical-align: middle; margin-right: 12px; border-radius: 7px; }
+.title-top { padding-top: max(24px, env(safe-area-inset-top)); }
+.title-screen { min-height: 100svh; padding-bottom: env(safe-area-inset-bottom); }
+.platform-status { color: #91aa9b; font: 9px/1.6 Consolas, monospace; letter-spacing: 1px; }
+.mobile-tools { display: none; }
+.install-steps { padding-left: 22px; color: #bfcfcd; line-height: 1.9; }
+.install-icon { float: right; width: 90px; height: 90px; border-radius: 20px; margin: 0 0 20px 20px; }
+.modal-card { overscroll-behavior: contain; }
+.modal { padding-top: max(12px, env(safe-area-inset-top)); padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+.touch-controls button[aria-pressed="true"], .mobile-tools button[aria-pressed="true"] { border-color: var(--mint); background: #284438; color: var(--mint); }
+
+@media (max-width: 720px), (pointer: coarse) and (max-width: 1100px), (max-height: 600px) and (max-width: 1100px) {
+  body.playing { height: 100vh; height: 100dvh; overflow: hidden; }
+  #gameScreen { height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+  .topbar { flex: 0 0 48px; min-height: 48px; height: 48px; padding: 0 10px; }
+  .logo { font-size: 15px; }
+  .logo span { font-size: 8px; letter-spacing: 3px; }
+  .header-actions button { width: 44px; height: 44px; padding: 0; text-align: center; }
+  .header-actions > span { display: none; }
+  #worldClock { font-size: 10px; gap: 6px; }
+  #worldClock > span:last-child { display: none; }
+  .mobile-vitals { flex: 0 0 44px; display: flex; padding: 0 8px; gap: 4px; font-size: 10px; }
+  .mobile-vitals button { min-height: 44px; min-width: 44px; font-size: 11px; padding: 4px 7px; }
+  .game-layout { flex: 1; display: flex; width: 100%; min-height: 0; margin: 0; overflow: hidden; }
+  .left-panel, .right-panel { display: none; }
+  .play-column { display: flex; flex-direction: column; flex: 1; min-height: 0; padding: 0 8px 6px; overflow: hidden; }
+  .location-heading { flex: 0 0 48px; height: 48px; }
+  .location-heading h2 { font-size: 21px; margin-top: 3px; }
+  .location-heading .eyebrow { font-size: 8px; letter-spacing: .5px; }
+  #districtDanger { font-size: 8px; }
+  .canvas-wrap { flex: 1 1 auto; min-height: 100px; }
+  #mapCanvas { width: 100%; height: 100%; min-height: 0; object-fit: fill; }
+  .map-label { top: 6px; left: 6px; max-width: calc(100% - 12px); font-size: 8px; padding: 5px 7px; pointer-events: none; }
+  .zoom-controls { right: 4px; bottom: 4px; }
+  .zoom-controls button { width: 44px; height: 44px; text-align: center; padding: 0; }
+  .hover-tip { bottom: 6px; left: 6px; max-width: calc(100% - 105px); font-size: 10px; }
+  .actionbar { flex: 0 0 48px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; padding: 4px 0 0; }
+  .actionbar button { min-width: 0; min-height: 44px; padding: 4px 2px; font-size: 10px; overflow: hidden; white-space: normal; }
+  .actionbar kbd { display: none; }
+  .log-heading { flex: 0 0 16px; height: 16px; margin: 3px 0 0; font-size: 8px; letter-spacing: .5px; }
+  #turnNumber { max-width: 57%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .log-board { flex: 0 0 136px; height: 136px; display: grid; grid-template-columns: minmax(0, 1fr) 136px; gap: 8px; }
+  .log-board #eventLog { height: 132px; min-height: 0; padding-top: 4px; font-size: 10px; line-height: 1.55; }
+  .log-board .touch-controls { position: static; display: grid; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); gap: 2px; width: 136px; padding: 0; opacity: 1; align-self: start; }
+  .touch-controls button { width: 44px; height: 44px; padding: 0; margin: 0; text-align: center; font-size: 19px; background: #182c32; }
+  .mobile-tools { display: flex; flex: 0 0 46px; gap: 4px; padding-top: 3px; }
+  .mobile-tools button { flex: 1; min-width: 0; height: 44px; padding: 5px 3px; font-size: 10px; text-align: center; }
+  .modal { padding-left: 8px; padding-right: 8px; }
+  .modal-card { max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px); }
+  .modal-header { position: sticky; top: 0; z-index: 2; background: #111c23; padding: 12px 16px; }
+  .close-button { min-width: 44px; min-height: 44px; }
+  #modalBody { padding: 16px; }
+  #modalBody button { min-height: 44px; }
+  .title-top { padding-left: 20px; padding-right: 20px; }
+  .wordmark { font-size: 8px; letter-spacing: 1px; }
+  .brand-icon { margin-right: 6px; width: 28px; height: 28px; }
+  .title-content { margin: 5vh 24px 90px; }
+  .title-links { flex-wrap: wrap; gap: 8px 20px; }
+  .title-links button { min-height: 44px; }
+  .title-bottom { position: relative; left: auto; right: auto; bottom: auto; margin: 0 24px 20px; }
+}
+@media (max-width: 370px) {
+  .logo { font-size: 12px; }
+  #worldClock { font-size: 9px; }
+  .mobile-vitals { font-size: 9px; }
+  .location-heading h2 { font-size: 18px; }
+}
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
+  .play-column { display: grid; grid-template-columns: minmax(0, 1fr) 200px; grid-template-rows: 40px minmax(100px, 1fr) 46px; column-gap: 8px; }
+  .location-heading { grid-column: 1; grid-row: 1; height: 40px; }
+  .canvas-wrap { grid-column: 1; grid-row: 2 / 4; }
+  .actionbar { grid-column: 2; grid-row: 1; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .log-heading { display: none; }
+  .log-board { grid-column: 2; grid-row: 2; display: flex; flex-direction: column; align-items: center; height: auto; padding-top: 8px; }
+  .log-board #eventLog { flex: 1; width: 100%; max-height: 50px; order: 2; }
+  .mobile-tools { grid-column: 2; grid-row: 3; }
+}

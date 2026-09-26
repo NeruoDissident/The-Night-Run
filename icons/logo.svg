@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Night Run: a fractured skyline and a road out">
+<defs><linearGradient id="b" x2=".8" y2="1"><stop stop-color="#243b42"/><stop offset="1" stop-color="#0b151f"/></linearGradient></defs>
+<path fill="url(#b)" d="M0 0h512v512H0z"/>
+<circle cx="344" cy="144" r="34" fill="#e3c18a"/>
+<path d="M108 352V216h60v136m32 0V136h72v216m32 0V248h80v104" fill="none" stroke="#93d7b5" stroke-width="22" stroke-linejoin="miter"/>
+<path fill="#0e2029" d="m292 112 34 16-66 108 58 52-100 132-42-24 83-105-57-51z"/>
+<path d="m311 112-78 125 59 53-94 119" fill="none" stroke="#e3c18a" stroke-width="13" stroke-linejoin="bevel"/>
+<path d="M128 242h20m-20 34h20m180 2h34m-34 34h34" stroke="#d0e5d4" stroke-width="10"/>
+</svg>
