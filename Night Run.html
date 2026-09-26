@@ -42,7 +42,7 @@ input { font-size: 16px; }
   .header-actions > span { display: none; }
   #worldClock { font-size: 10px; gap: 6px; }
   #worldClock > span:last-child { display: none; }
-  .mobile-vitals { flex: 0 0 44px; display: flex; padding: 0 8px; gap: 4px; font-size: 10px; }
+  .mobile-vitals { flex: 0 0 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; gap: 4px; font: 10px Consolas, monospace; color: var(--mint); }
   .mobile-vitals button { min-height: 44px; min-width: 44px; font-size: 11px; padding: 4px 7px; }
   .game-layout { flex: 1; display: flex; width: 100%; min-height: 0; margin: 0; overflow: hidden; }
   .left-panel, .right-panel { display: none; }
@@ -89,7 +89,7 @@ input { font-size: 16px; }
   .location-heading h2 { font-size: 18px; }
 }
 @media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
-  .play-column { display: grid; grid-template-columns: minmax(0, 1fr) 200px; grid-template-rows: 40px minmax(100px, 1fr) 46px; column-gap: 8px; }
+  .play-column { display: grid; grid-template-columns: minmax(0, 1fr) 240px; grid-template-rows: 40px minmax(100px, 1fr) 46px; column-gap: 8px; }
   .location-heading { grid-column: 1; grid-row: 1; height: 40px; }
   .canvas-wrap { grid-column: 1; grid-row: 2 / 4; }
   .actionbar { grid-column: 2; grid-row: 1; grid-template-columns: repeat(5, minmax(0, 1fr)); }
@@ -400,7 +400,7 @@ applySettings();$('continueButton').disabled=!savedAvailable;if(memories.length)
 function sound(type='click'){if(!settings.sound)return;try{audioCtx??=new(window.AudioContext||window.webkitAudioContext)();audioCtx.resume();let o=audioCtx.createOscillator(),a=audioCtx.createGain();o.connect(a);a.connect(audioCtx.destination);o.type=type==='hurt'?'sawtooth':'sine';o.frequency.setValueAtTime(type==='hurt'?80:type==='attack'?180:440,audioCtx.currentTime);o.frequency.exponentialRampToValueAtTime(type==='click'?330:35,audioCtx.currentTime+.1);a.gain.setValueAtTime(.025,audioCtx.currentTime);a.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.12);o.start();o.stop(audioCtx.currentTime+.13);}catch{}}
 function open(title,body,kicker='FIELD TERMINAL'){stopWalk();$('modalTitle').textContent=title;$('modalKicker').textContent=kicker;$('modalBody').innerHTML=body;$('modal').hidden=false;}
 function close(){if(g?.s.ending&&view==='ending')return;$('modal').hidden=true;view='';if(g)g.prompt=null;$('mapCanvas').focus({preventScroll:true});}
-function attach(game){g=game;window.nightRun=g;target=null;dashMode=false;document.body.classList.add('playing');g.onchange=update;$('titleScreen').hidden=true;$('gameScreen').hidden=false;$('modal').hidden=true;view='';update();}
+function attach(game){g=game;window.nightRun=g;target=null;dashMode=false;$('dashButton').setAttribute('aria-pressed','false');$('dashButton').textContent='Dash: off';document.body.classList.add('playing');g.onchange=update;$('titleScreen').hidden=true;$('gameScreen').hidden=false;$('modal').hidden=true;view='';update();}
 function update(){if(!g)return;renderHUD();draw();const effects=g.effects.splice(0);for(const e of effects){anim.push({...e,start:performance.now()});sound(e.type);}if(g.s.ending){try{localStorage.removeItem(SAVE);}catch{}if(!g.s.flags.recorded){g.s.flags.recorded=true;memories.push({name:g.p.name,ending:g.s.ending.type,seed:g.s.seed,day:g.day});try{localStorage.setItem(META,JSON.stringify(memories));}catch{}}ending();return;}try{localStorage.setItem(SAVE,g.serialize());$('saveState').textContent='● SAVED LOCALLY';}catch{$('saveState').textContent='EXPORT SAVE TO KEEP PROGRESS';}if(g.prompt)renderPrompt();else if(view==='inventory')inventory();else if(view==='talents')talents();else if(view==='craft')crafting();else if(view==='shop')shop();else if(view==='augments')augments();}
 function renderHUD(){const p=g.p,z=D.zones[g.s.zone],c=D.classes.find(c=>c.id===p.cls),hours=Math.floor(g.s.time/60)%24,mins=g.s.time%60;document.documentElement.style.setProperty('--accent',z.color);
  $('worldClock').innerHTML=`<b>${g.night?'☾':'☀'} DAY ${g.day}</b><span>${String(hours).padStart(2,'0')}:${String(mins).padStart(2,'0')}</span><span>${esc(g.s.weather)}</span>`;

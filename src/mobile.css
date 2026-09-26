@@ -24,7 +24,7 @@ input { font-size: 16px; }
   .header-actions > span { display: none; }
   #worldClock { font-size: 10px; gap: 6px; }
   #worldClock > span:last-child { display: none; }
-  .mobile-vitals { flex: 0 0 44px; display: flex; padding: 0 8px; gap: 4px; font-size: 10px; }
+  .mobile-vitals { flex: 0 0 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; gap: 4px; font: 10px Consolas, monospace; color: var(--mint); }
   .mobile-vitals button { min-height: 44px; min-width: 44px; font-size: 11px; padding: 4px 7px; }
   .game-layout { flex: 1; display: flex; width: 100%; min-height: 0; margin: 0; overflow: hidden; }
   .left-panel, .right-panel { display: none; }
@@ -71,7 +71,7 @@ input { font-size: 16px; }
   .location-heading h2 { font-size: 18px; }
 }
 @media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
-  .play-column { display: grid; grid-template-columns: minmax(0, 1fr) 200px; grid-template-rows: 40px minmax(100px, 1fr) 46px; column-gap: 8px; }
+  .play-column { display: grid; grid-template-columns: minmax(0, 1fr) 240px; grid-template-rows: 40px minmax(100px, 1fr) 46px; column-gap: 8px; }
   .location-heading { grid-column: 1; grid-row: 1; height: 40px; }
   .canvas-wrap { grid-column: 1; grid-row: 2 / 4; }
   .actionbar { grid-column: 2; grid-row: 1; grid-template-columns: repeat(5, minmax(0, 1fr)); }

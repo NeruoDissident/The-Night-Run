@@ -1,7 +1,7 @@
 /* Build-generated, scope-isolated offline cache. Does not contain saved games. */
 'use strict';
 const PREFIX = 'night-run:' + self.registration.scope + ':';
-const CACHE = PREFIX + 'bf2365f589872fb9';
+const CACHE = PREFIX + 'b6a941681f7db4ca';
 const ASSETS = ["./index.html", "./manifest.webmanifest", "./apple-touch-icon.png", "./icons/favicon-32.png", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/icon-maskable-512.png", "./icons/logo.svg"];
 const ROOT = new URL('./', self.registration.scope).href;
 const INDEX = new URL('index.html', ROOT).href;
